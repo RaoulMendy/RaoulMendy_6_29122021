@@ -9,9 +9,7 @@ async function getPhotographers() {
       }
     })
     .then(function (data) {
-      console.log(data);
       photographers = data.photographers;
-      console.log(photographers);
     })
 
     .catch(function (err) {
@@ -19,10 +17,9 @@ async function getPhotographers() {
       // Une erreur est survenue
     });
 
-  console.log(photographers);
   // et bien retourner le tableau photographers seulement une fois
   return {
-    photographers
+    photographers,
   };
 }
 
