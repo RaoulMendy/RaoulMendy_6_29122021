@@ -7,6 +7,7 @@
 
 body {
   font-family: "DM Sans", sans-serif;
+  margin-bottom: 50px;
 }
 
 header {
@@ -87,14 +88,20 @@ h1 {
 
 .photographer-card__link__name {
   color: #D3573C;
-  font-size: 36px;
+  font-size: 30px;
 }
 
 .photographer-card__city {
+  font-size: 13px;
   color: #901C1C;
 }
 
+.photographer-card__tagline {
+  font-size: 10px;
+}
+
 .photographer-card__price {
+  font-size: 9px;
   color: #525252;
 }
 
@@ -103,12 +110,8 @@ h1 {
   margin: 0;
 }
 
-#contact_modal {
-  display: none;
-}
-
 .photograph-header {
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   height: 300px;
   margin: 0 100px;
 }
@@ -126,9 +129,13 @@ h1 {
   cursor: pointer;
 }
 
+#contact_modal {
+  display: none;
+}
+
 .modal {
   border-radius: 5px;
-  background-color: #DB8876;
+  background-color: #db8876;
   width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -179,7 +186,7 @@ form {
 }
 
 form label {
-  color: #312E2E;
+  color: #312e2e;
   font-size: 36px;
 }
 

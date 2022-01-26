@@ -1,8 +1,9 @@
 async function getPhotographers() {
   // Penser à remplacer par les données récupérées dans le json
   let photographers = [];
+  const api_url = "./data/photographers.json"
 
-  await fetch("./data/photographers.json")
+  await fetch(api_url)
     .then(function (res) {
       if (res.ok) {
         return res.json();

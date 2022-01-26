@@ -15,19 +15,22 @@
   
       &__name {
         color: $color-secondary;
-        font-size: 36px;
+        font-size: 30px;
       }
     }
   
     &__city {
+      font-size: 13px;
       color: $color-primary;
     }
   
-    // &__tagline {
+    &__tagline {
+      font-size: 10px;
   
-    // }
+    }
   
     &__price {
+      font-size: 9px;
       color: $color-tertiary;
     }
   }
