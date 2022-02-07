@@ -1,7 +1,25 @@
 .photograph-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  align-items: center;
   background-color: #fafafa;
   height: 300px;
   margin: 0 100px;
+
+  &__name {
+    color: $color-secondary;
+    font-size: 48px;
+  }
+
+  &__city {
+    color: $color-primary;
+    font-size: 24px;
+  }
+
+  &__tagline {
+    font-size: 18px;
+  }
 }
 
 .contact_button {

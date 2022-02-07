@@ -5,15 +5,6 @@
     &__link {
       @include flex-center;
       
-  
-      &__portrait {
-        height: 200px;
-        width: 200px;
-        border-radius: 50%;
-        object-fit: cover;
-  
-      }
-  
       &__name {
         color: $color-secondary;
         font-size: 30px;
