@@ -16,12 +16,42 @@ a {
   font-weight: unset;
 }
 
+label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
 .portrait {
   height: 200px;
   width: 200px;
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.sort {
+  width: 170px;
+  position: relative;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  height: 70px;
+  border: none;
+  background-color: #901C1C;
+  border-radius: 5px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("/assets/icons/arrow-down.svg");
+  background-repeat: no-repeat;
+  background-size: 10%;
+  background-position: right 10% top 50%;
+}
+
+.sort:focus, .sort:hover {
+  outline: none;
 }
 
 header {
@@ -144,6 +174,10 @@ h1 {
 
 .photograph-header__tagline {
   font-size: 18px;
+}
+
+.photograph-media {
+  margin: 30px 100px 0 100px;
 }
 
 .contact_button {
@@ -282,5 +316,58 @@ form input {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
   }
+}
+
+.mediaCard-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 25px;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.mediaCard {
+  width: 350px;
+  height: 350px;
+}
+
+.mediaCard__thumbnail {
+  height: 300px;
+  width: 350px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.mediaCard__header {
+  color: #901C1C;
+  font-weight: bolder;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 50px;
+}
+
+.sticker {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  height: 90px;
+  width: 375px;
+  background-color: #D3573C;
 }
 /*# sourceMappingURL=style.css.map */

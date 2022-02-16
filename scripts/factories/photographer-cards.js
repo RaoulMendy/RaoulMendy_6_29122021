@@ -2,11 +2,12 @@ function photographerFactory(data) {
   const { name, city, tagline, price, portrait, id } = data;
   const picture = `assets/images/photographers/${portrait}`;
 
+  // Méthode qui génère le HTML
   function getUserCardDOM() {
-    // Génération des éléments HTML + Nommage
+    //Creation et pointage de la balise ARTICLE
     const article = document.createElement("article");
     article.setAttribute("class", "photographer-card");
-
+    // A
     const photographerCard = `
       <a class="photographer-card__link" href="photographer.html?id=${id}">
         <img

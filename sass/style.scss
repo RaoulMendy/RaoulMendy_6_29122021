@@ -1,4 +1,3 @@
-
 @import "./utils/variables";
 @import "./utils/mixins";
 @import "./base/typography";
@@ -38,13 +37,47 @@
 }
 
 @media screen and (max-width: 768px) {
-
-
-
   .photographer_section {
     grid-template-columns: 1fr;
   }
-
-
 }
 
+// Page photographe media
+.mediaCard-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 25px;
+  justify-items: center;
+  align-items: center;
+}
+
+.mediaCard {
+  width: 350px;
+  height: 350px;
+
+  &__thumbnail {
+    height: 300px;
+    width: 350px;
+    object-fit: cover;
+  }
+
+  &__header {
+    color: $color-primary;
+    font-weight: bolder;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+  }
+}
+
+.sticker {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  height: 90px;
+  width: 375px;
+  background-color: $color-secondary;
+}

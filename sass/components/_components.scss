@@ -1,6 +1,41 @@
+// portrait photographe
 .portrait {
   height: 200px;
   width: 200px;
   border-radius: 50%;
   object-fit: cover;
 }
+
+// Liste déroulante
+
+.sort {
+  width: 170px;
+  position: relative;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  height: 70px;
+  border: none;
+  background-color: $color-primary;
+  border-radius: 5px;
+  cursor: pointer;
+
+  // Personalisation flèche
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('/assets/icons/arrow-down.svg');
+  background-repeat: no-repeat;
+  background-size: 10%;
+  background-position: right 10% top 50% ;
+}
+
+
+.sort:focus,.sort:hover {
+  outline: none;
+}
+
+
+
+
