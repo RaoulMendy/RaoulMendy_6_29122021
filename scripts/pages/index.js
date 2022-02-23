@@ -1,13 +1,11 @@
 async function getPhotographers() {
   // Penser à remplacer par les données récupérées dans le json
-  const response = await fetch("./data/photographers.json");
-  const data = await response.json();
-  const photographers = data.photographers;
-
+  await APIcall();
   return {
     photographers,
   };
 }
+
 
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
