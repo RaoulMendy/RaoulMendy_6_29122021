@@ -2,6 +2,7 @@ function photographerFactory(data) {
   const { name, city, tagline, price, portrait, id } = data;
   const picture = `assets/images/photographers/${portrait}`;
 
+
   // Méthode qui génère le HTML
   function getUserCardDOM() {
     //Creation et pointage de la balise ARTICLE
