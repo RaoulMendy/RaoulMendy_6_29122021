@@ -42,11 +42,19 @@
   }
 }
 
-// Page photographe media
+.media-section {
+  margin: 0 100px;
+}
+
+.mediaCard-filter {
+  margin-block: 50px;
+}
+
 .mediaCard-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   row-gap: 25px;
+  column-gap: 25px;
   justify-items: center;
   align-items: center;
 }

@@ -318,12 +318,22 @@ form input {
   }
 }
 
+.media-section {
+  margin: 0 100px;
+}
+
+.mediaCard-filter {
+  margin-block: 50px;
+}
+
 .mediaCard-container {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr;
   row-gap: 25px;
+  -webkit-column-gap: 25px;
+          column-gap: 25px;
   justify-items: center;
   -webkit-box-align: center;
       -ms-flex-align: center;

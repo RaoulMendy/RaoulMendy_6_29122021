@@ -1,102 +1,93 @@
 // Récupération de l'id
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
+const sectionHeader = document.querySelector(".photograph-header");
+const mediaContainer = document.querySelector(".mediaCard-container");
+let tableauMedia = [];
+let activePhotographer = [];
 
-// ISOLATION
-async function photographerHeader() {
+// ISOLATION DES DONNEES
+async function getActiveProfile() {
   await APIcall();
   const profileSelected = photographers.filter(function (photographer) {
-    if (photographer.id == id) {
+    return photographer.id == id;
+  });
+  activePhotographer.push(profileSelected[0]);
+
+  const mediaFiltered = medias.filter(function (media) {
+    if (media.photographerId == id) {
       return true;
     } else {
       return false;
     }
   });
 
-  const photographerSelected = {
-    name: profileSelected[0].name,
-    city: profileSelected[0].city,
-    tagline: profileSelected[0].tagline,
-    portrait: profileSelected[0].portrait,
-  };
+  for (let i = 0; i < mediaFiltered.length; i++) {
+    tableauMedia.push(mediaFiltered[i]);
+  }
+}
 
-  const photographerSection = document.querySelector(".photograph-header");
-  const photographerHeader = `
-<div>
-<h1 class="photograph-header__name">${photographerSelected.name}</h1>
-  <p class="photograph-header__city">${photographerSelected.city}</p>
-  <p class="photograph-header__tagline">${photographerSelected.tagline}</p>
+async function createHTML() {
+  await getActiveProfile();
+  const contentHeader = `
+  <div>
+  <h1 class="photograph-header__name">${activePhotographer[0].name}</h1>
+  <p class="photograph-header__city">${activePhotographer[0].city}</p>
+  <p class="photograph-header__tagline">${activePhotographer[0].tagline}</p>
   </div>
   <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-  <img src="/assets/images/photographers/${photographerSelected.portrait}" class="photograph-header__picture portrait" />
+  <img src="/assets/images/photographers/${activePhotographer[0].portrait}" class="photograph-header__picture portrait" />
+
   `;
-  photographerSection.innerHTML = photographerHeader;
+  sectionHeader.innerHTML = contentHeader;
+  // *****************************************************************************
+  // *****************************************************************************
+  createArticle(activePhotographer, tableauMedia);
+
 }
-photographerHeader();
 
-// const newObj = {};
-// for (let i = 0;  i < photographers.length; i++) {
-//   console.log(photographers[i].id);
-//   console.log(id)
-//   if (photographers[i].id === id) {
-//     newObj.push(photographers[i]);
+async function init() {
+  await createHTML();
+}
 
-// }}
+init();
+console.log(tableauMedia);
+console.log(activePhotographer);
 
-// return console.log(newObj);
-// console.log(id);
-// console.log(typeof id);
-// console.log(photographers.filter((e) => e == id));
-// console.log(photographers);
-// console.log(photographers[0]);
-// console.log(typeof photographers[0].id);
-// let callback = v => v.id === id
-// const lebon = photographers.filter(callback);
-// console.log(lebon)
-// console.log(id)
-// for (let i = 0;  i < photographers.length; i++) {
-// console.log(photographers[i].id);
-// if (photographers[i].id === id) {
-//   return true
-// }
+// **********************************************************************************************************************
+function createArticle(activeProfile, mediaFiltered) {
+  //Function helper
+  function setAttributes(el, attrs) {
+    for (var key in attrs) {
+      el.setAttribute(key, attrs[key]);
+    }
+  }
 
-// for (let i = 0;  i < photographers.length; i++) {
-//   console.log(photographers[i]);
+  // Boucle pour générer chaque article
+  for (let i = 0; i < mediaFiltered.length; i++) {
+    const media = document.createElement("article");
+    media.setAttribute("class", "mediaCard");
+    mediaContainer.appendChild(media);
 
-// }}
-// console.log(photographers[0])
-// console.log(id);
-// console.log(photographers.find((e) => e.id === 243));
-// console.log(photographers.filter((e) => e.id === `${id}`));
-// console.log(photographers)
+    const mediaThumbnail = document.createElement("img");
+    setAttributes(mediaThumbnail, {
+      "class": "mediaCard__thumbnail",
+      "src": `/assets/images/Sample Photos/${
+        activeProfile[0].name.replace("-", " ").split(" ")[0]
+      }/${mediaFiltered[i].image}`,
+    });
+    media.appendChild(mediaThumbnail);
 
-// return (
-//   console.log(photographers.filter((id) => id.id === 243)),
-//   console.log(photographers.find((id) => id.id === 243)),
-//   console.log({photographers}),
-//   console.log(photographers.find((x) => x.id === `${id}`)),
-//   console.log(photographers.filter((x) => x.id === `${id}`))
-// );
-
-// const getPhotographerbyId = photographers.find((x) => x.id === `${id}`);
-
-// Fonction de récupération des données
-// async function apiGlobal() {
-//   await APIcall();
-//   return {
-//     photographers,
-//   };
-// }
-
-// Création de l'objet unique photographe pour header
-
-// DOM Photograph-header
-
-
-// // // DOM Photograph-media
-// const mediaSection = document.createElement("div");
-// photographerSection.after(mediaSection);
-// mediaSection.setAttribute("class", "photograph-media");
+    const mediaHeader = document.createElement("div");
+    media.appendChild(mediaHeader);
+    mediaHeader.setAttribute("class", "mediaCard__header")
+    const mediaHeaderContent = `
+    <p class="mediaCard__header__title">${mediaFiltered[i].title}</p>
+    <p class="mediaCard__header__favcount">${mediaFiltered[i].likes} <span class="fas fa-heart"></span></p>`;
+    mediaHeader.innerHTML = mediaHeaderContent;
+  }
+}
+// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 // // DOM Menu déroulant
 // const mediaContent = `
@@ -114,7 +105,3 @@ photographerHeader();
 // arrow.addEventListener("click", () => {
 //   arrow.style.backgroundImage = `url('/assets/icons/arrow-up.svg')`;
 // });
-
-// // DOM media grid
-
-// displayPhotographerHeader();

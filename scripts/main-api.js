@@ -5,7 +5,8 @@ async function APIcall() {
       return res.json();
     })
     .then((data) => {
+      promiseAPI = data
       photographers = data.photographers;
-      media = data.media;
+      medias = data.media;
     });
 }

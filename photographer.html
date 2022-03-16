@@ -28,22 +28,19 @@
         <p class="sticker__price">300 € / jour</p>
       </div>
 
+      <div class="media-section">
+        <div class="mediaCard-filter">
+          <label for="sort">Trier par</label>
+          <select name="sort" id="sort" class="sort">
+            <option value="popularité">Popularité</option>
+            <option value="date">Date</option>
+            <option value="titre">Titre</option>
+          </select>
+        </div>
+
+        <div class="mediaCard-container"></div>
+
       <!-- Création HTML -->
-      <div class="mediaCard-container">
-        <article class="mediaCard">
-          <img
-            class="mediaCard__thumbnail"
-            src="/assets/images/photographers/account.png"
-            alt="test"
-          />
-          <div class="mediaCard__header">
-            <p class="mediaCard__header__title">Titre</p>
-            <p class="mediaCard__header__favcount">
-              12 <span class="fas fa-heart"></span>
-            </p>
-          </div>
-        </article>
-      </div>
     </main>
     <div id="contact_modal">
       <div class="modal">
