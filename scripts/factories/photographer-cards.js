@@ -2,7 +2,6 @@ function photographerFactory(data) {
   const { name, city, tagline, price, portrait, id } = data;
   const picture = `assets/images/photographers/${portrait}`;
 
-
   // Méthode qui génère le HTML
   function getUserCardDOM() {
     //Creation et pointage de la balise ARTICLE
@@ -24,25 +23,25 @@ function photographerFactory(data) {
     article.innerHTML = photographerCard;
     return article;
   }
-  return { name, picture, getUserCardDOM };
+
+
+
+  function headerDOM() {
+    const card = document.createElement("div");
+    card.setAttribute("class", "photograph-header");
+    const comCard = `
+    <div>
+    <h1 class="photograph-header__name">${name}</h1>
+    <p class="photograph-header__city">${city}</p>
+    <p class="photograph-header__tagline">${tagline}</p>
+    </div>
+    <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+    <img src="/assets/images/photographers/${portrait}" class="photograph-header__picture portrait" />
+  
+    `;
+    card.innerHTML = comCard;
+    return card;
+  }
+  
+  return { name, picture, getUserCardDOM, headerDOM };
 }
-
-
-
-// function photographerFactory(data) {
-//     const { name, city, tagline, price, portrait, id  } = data;
-
-//     const picture = `assets/photographers/${portrait}`;
-
-//     function getUserCardDOM() {
-//         const article = document.createElement( 'article' );
-//         const img = document.createElement( 'img' );
-//         img.setAttribute("src", picture)
-//         const h2 = document.createElement( 'h2' );
-//         h2.textContent = name;
-//         article.appendChild(img);
-//         article.appendChild(h2);
-//         return (article);
-//     }
-//     return { name, picture, getUserCardDOM }
-// }
