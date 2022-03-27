@@ -7,17 +7,13 @@ const mediaContainer = document.querySelector(".mediaCard-container");
 // Création de l'objet avec toutes les données
 async function getActiveProfile() {
   await APIcall();
-
-  function Trier(array, jsonId) {
-    array.filter(function (el) {
-      if (array.jsonId == id) return array.id == id;
-    });
-  }
+  // Filtre photographe actif
   const profileSelected = photographers.filter(function (photographer) {
     return photographer.id == id;
   });
 
   let activeUser = profileSelected[0];
+  console.log(activeUser);
 
   const mediaFiltered = medias.filter(function (media) {
     if (media.photographerId == id) {
@@ -32,24 +28,41 @@ async function getActiveProfile() {
     tableauMedia.push(mediaFiltered[i]);
   }
 
-  return { activeUser, tableauMedia };
+  let allLikes = 0;
+  for (let i = 0; i < tableauMedia.length; i++) {
+    allLikes += tableauMedia[i].likes;
+    console.log(`${allLikes} likes`);
+  }
+
+  return { activeUser, tableauMedia, allLikes };
 }
 
+function sticker(activeUser, allLikes) {
+  const sticker = document.createElement("div");
+  sticker.setAttribute("class", "sticker");
+  const content = `
+    <p class="sticker__likes">${allLikes} <span class="fas fa-heart"></span></p>
+    <p class="sticker__price">${activeUser.price} € / jour</p>
+   `;
+  sticker.innerHTML = content;
+  main.appendChild(sticker)
+}
 // Afficher le header
 async function displayHeader(activeUser) {
   const photographerHeader = photographerFactory(activeUser);
-  const oneCard = photographerHeader.headerDOM();
+  const oneCard = photographerHeader.headerDOM(); 
   main.prepend(oneCard);
+  
 }
 
 async function init() {
-  const { activeUser, tableauMedia } = await getActiveProfile();
+  const { activeUser, tableauMedia, allLikes } = await getActiveProfile();
   displayHeader(activeUser);
   mediaFactory(activeUser, tableauMedia);
+  sticker(activeUser, allLikes);
 }
 
 init();
-console.log(getActiveProfile());
 
 // **********************************************************************************************************************
 

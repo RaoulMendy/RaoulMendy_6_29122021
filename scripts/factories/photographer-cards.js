@@ -42,6 +42,8 @@ function photographerFactory(data) {
     card.innerHTML = comCard;
     return card;
   }
+
+  
   
   return { name, picture, getUserCardDOM, headerDOM };
 }
