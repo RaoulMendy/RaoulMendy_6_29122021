@@ -13,8 +13,7 @@ async function getActiveProfile() {
   });
 
   let activeUser = profileSelected[0];
-  console.log(activeUser);
-
+  
   const mediaFiltered = medias.filter(function (media) {
     if (media.photographerId == id) {
       return true;
@@ -31,8 +30,9 @@ async function getActiveProfile() {
   let allLikes = 0;
   for (let i = 0; i < tableauMedia.length; i++) {
     allLikes += tableauMedia[i].likes;
-    console.log(`${allLikes} likes`);
+    // console.log(`${allLikes} likes`);
   }
+
 
   return { activeUser, tableauMedia, allLikes };
 }
